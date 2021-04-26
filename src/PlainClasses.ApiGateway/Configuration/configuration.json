@@ -2,7 +2,7 @@
   "Routes": [
     {
       "DownstreamPathTemplate": "/api/identity",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DangerousAcceptAnyServerCertificateValidator": true,
       "DownstreamHostAndPorts": [
         {
@@ -10,12 +10,13 @@
           "Port": 5002
         }
       ],
-      "UpstreamPathTemplate": "/api/identity",
-      "UpstreamHttpMethod": ["GET"]
+      "UpstreamPathTemplate": "/gateway/api/identity",
+      "UpstreamHttpMethod": ["GET", "POST"],
+      "SwaggerKey": "identity"
     },
     {
       "DownstreamPathTemplate": "/api/edublock",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DangerousAcceptAnyServerCertificateValidator": true,
       "DownstreamHostAndPorts": [
         {
@@ -23,12 +24,12 @@
           "Port": 5004
         }
       ],
-      "UpstreamPathTemplate": "/api/edublock",
+      "UpstreamPathTemplate": "/gateway/api/edublock",
       "UpstreamHttpMethod": ["GET"]
     },
     {
       "DownstreamPathTemplate": "/api/person",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DangerousAcceptAnyServerCertificateValidator": true,
       "DownstreamHostAndPorts": [
         {
@@ -36,12 +37,12 @@
           "Port": 5006
         }
       ],
-      "UpstreamPathTemplate": "/api/person",
+      "UpstreamPathTemplate": "/gateway/api/person",
       "UpstreamHttpMethod": ["GET"]
     },
     {
       "DownstreamPathTemplate": "/api/platoon",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DangerousAcceptAnyServerCertificateValidator": true,
       "DownstreamHostAndPorts": [
         {
@@ -49,8 +50,20 @@
           "Port": 5008
         }
       ],
-      "UpstreamPathTemplate": "/api/platoon",
+      "UpstreamPathTemplate": "/gateway/api/platoon",
       "UpstreamHttpMethod": ["GET"]
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "identity",
+      "Config": [
+        {
+          "Name": "Identity API",
+          "Version": "v1",
+          "Url": "http://localhost:5002/swagger/v1/swagger.json"
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {
