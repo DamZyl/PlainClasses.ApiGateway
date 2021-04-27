@@ -11,7 +11,7 @@
         }
       ],
       "UpstreamPathTemplate": "/gateway/api/identity",
-      "UpstreamHttpMethod": ["GET", "POST"],
+      "UpstreamHttpMethod": ["POST"],
       "SwaggerKey": "identity"
     },
     {
@@ -25,7 +25,64 @@
         }
       ],
       "UpstreamPathTemplate": "/gateway/api/edublock",
-      "UpstreamHttpMethod": ["GET"]
+      "UpstreamHttpMethod": ["GET", "POST"],
+      "SwaggerKey": "edublock"
+    },
+    {
+      "DownstreamPathTemplate": "/api/edublock/{id}",
+      "DownstreamScheme": "http",
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5004
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/api/edublock/{id}",
+      "UpstreamHttpMethod": ["GET", "PUT", "DELETE"],
+      "SwaggerKey": "edublock"
+    },
+    {
+      "DownstreamPathTemplate": "/api/edublock/{id}/function",
+      "DownstreamScheme": "http",
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5004
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/api/edublock/{id}/function",
+      "UpstreamHttpMethod": ["POST"],
+      "SwaggerKey": "edublock"
+    },
+    {
+      "DownstreamPathTemplate": "/api/edublock/{id}/function/{functionId}",
+      "DownstreamScheme": "http",
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5004
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/api/edublock/{id}/function/{functionId}",
+      "UpstreamHttpMethod": ["DELETE"],
+      "SwaggerKey": "edublock"
+    },
+    {
+      "DownstreamPathTemplate": "/api/edublock/{id}/platoon/{platoonId}",
+      "DownstreamScheme": "http",
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5004
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/api/edublock/{id}/platoon/{platoonId}",
+      "UpstreamHttpMethod": ["POST","DELETE"],
+      "SwaggerKey": "edublock"
     },
     {
       "DownstreamPathTemplate": "/api/person",
@@ -38,7 +95,50 @@
         }
       ],
       "UpstreamPathTemplate": "/gateway/api/person",
-      "UpstreamHttpMethod": ["GET"]
+      "UpstreamHttpMethod": ["GET", "POST"],
+      "SwaggerKey": "person"
+    },
+    {
+      "DownstreamPathTemplate": "/api/person/{id}",
+      "DownstreamScheme": "http",
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5006
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/api/person/{id}",
+      "UpstreamHttpMethod": ["GET", "PUT", "DELETE"],
+      "SwaggerKey": "person"
+    },
+    {
+      "DownstreamPathTemplate": "/api/person/{id}/auth",
+      "DownstreamScheme": "http",
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5006
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/api/person/{id}/auth",
+      "UpstreamHttpMethod": ["POST"],
+      "SwaggerKey": "person"
+    },
+    {
+      "DownstreamPathTemplate": "/api/person/{id}/auth/{authId}",
+      "DownstreamScheme": "http",
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5006
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/api/person/{id}/auth/{authId}",
+      "UpstreamHttpMethod": ["DELETE"],
+      "SwaggerKey": "person"
     },
     {
       "DownstreamPathTemplate": "/api/platoon",
@@ -51,7 +151,36 @@
         }
       ],
       "UpstreamPathTemplate": "/gateway/api/platoon",
-      "UpstreamHttpMethod": ["GET"]
+      "UpstreamHttpMethod": ["GET", "POST"],
+      "SwaggerKey": "platoon"
+    },
+    {
+      "DownstreamPathTemplate": "/api/platoon/{id}",
+      "DownstreamScheme": "http",
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5008
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/api/platoon/{id}",
+      "UpstreamHttpMethod": ["GET", "PUT", "DELETE"],
+      "SwaggerKey": "platoon"
+    },
+    {
+      "DownstreamPathTemplate": "/api/platoon/{id}/person/{personId}",
+      "DownstreamScheme": "http",
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5008
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/api/platoon/{id}/person/{personId}",
+      "UpstreamHttpMethod": ["POST", "DELETE"],
+      "SwaggerKey": "platoon"
     }
   ],
   "SwaggerEndPoints": [
@@ -62,6 +191,36 @@
           "Name": "Identity API",
           "Version": "v1",
           "Url": "http://localhost:5002/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "edublock",
+      "Config": [
+        {
+          "Name": "EduBlock API",
+          "Version": "v1",
+          "Url": "http://localhost:5004/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "person",
+      "Config": [
+        {
+          "Name": "Person API",
+          "Version": "v1",
+          "Url": "http://localhost:5006/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "platoon",
+      "Config": [
+        {
+          "Name": "Platoon API",
+          "Version": "v1",
+          "Url": "http://localhost:5008/swagger/v1/swagger.json"
         }
       ]
     }
